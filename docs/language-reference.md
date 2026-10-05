@@ -2,6 +2,8 @@
 
 Section notes for [notebooks/python_mastery.ipynb](../notebooks/python_mastery.ipynb). Read a section here, then run the matching cells. Each note states the claim the section is making, what the cell is evidence for, and the mistake that section is meant to prevent.
 
+The official manual for the same ideas is linked from [Further reading](further-reading.md). Use it when a section here stops short of the rule you need. The language reference at <https://docs.python.org/3/reference/index.html> is the authority if this note and an experiment disagree.
+
 Restart the kernel and run from the top after you edit a cell. Later sections do not need names from earlier ones, but a stale object from an edited cell will confuse a re-run of that cell alone.
 
 ## 1. The execution model

@@ -25,6 +25,7 @@ The repository is open source under the [MIT Licence](LICENSE). You may use, cop
 | [docs/exercises.md](docs/exercises.md) | Practice that is not already solved in a cell |
 | [docs/glossary.md](docs/glossary.md) | Terms used in the notebooks |
 | [docs/faq.md](docs/faq.md) | Licence, version, coursework, and output questions |
+| [docs/further-reading.md](docs/further-reading.md) | Official Python documentation, mapped to each section |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose a correction |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Expected behaviour in issues and reviews |
 
@@ -80,3 +81,14 @@ The full setup, including a virtual environment and a table of common failures, 
 ## Licence
 
 MIT. See [LICENSE](LICENSE). Questions that come up when reusing the material in a course are answered in [docs/faq.md](docs/faq.md).
+
+## Official Python documentation
+
+This repository is a selection, not the manual. Readers who want the full language and library description should use the official documentation:
+
+- [Python documentation](https://docs.python.org/3/)
+- [Tutorial](https://docs.python.org/3/tutorial/index.html)
+- [Language reference](https://docs.python.org/3/reference/index.html)
+- [Standard library](https://docs.python.org/3/library/index.html)
+
+[docs/further-reading.md](docs/further-reading.md) maps each section of this course to the matching official page.

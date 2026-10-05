@@ -85,3 +85,7 @@ git pull origin main
 ```
 
 Pull before editing if the remote may have changed. Notebook output is stored in the file, so a pull can conflict if you re-ran a notebook and the remote copy also changed. For an untouched notebook, keep the remote version and run it again locally.
+
+## 8. Official documentation
+
+This repository does not replace the Python manual. The current manual is <https://docs.python.org/3/>. The tutorial, the language reference, and the library page for each topic in these notebooks are listed in [Further reading](further-reading.md).

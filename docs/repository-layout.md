@@ -11,6 +11,7 @@ NIELIT-PYTHON-/
 │   ├── README.md
 │   ├── exercises.md
 │   ├── faq.md
+│   ├── further-reading.md
 │   ├── getting-started.md
 │   ├── glossary.md
 │   ├── language-reference.md

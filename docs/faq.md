@@ -36,6 +36,10 @@ Yes. Call `play_interactive("python")` in a cell or a terminal session. The publ
 
 Yes. The licence allows that. Please keep the copyright and licence notice with any substantial copy you distribute to students. A link to the repository satisfies that for a digital handout if you do not redistribute modified files; a modified copy must include the notice.
 
+## Where should I read more?
+
+The official manual is <https://docs.python.org/3/>. [Further reading](further-reading.md) lists the tutorial, the language reference, the standard library, and the page that matches each section of this repository. Those pages are the authority when a note here is not enough.
+
 ## Where should a correction go?
 
 A wrong explanation or a failing cell belongs in an issue. A proposed notebook belongs in a pull request. The procedure is in [CONTRIBUTING.md](../CONTRIBUTING.md).
