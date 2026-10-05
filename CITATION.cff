@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this teaching material, please cite it as below."
+title: "NIELIT Python: language reference and capstone notebooks"
+abstract: >-
+  A public set of Jupyter notebooks covering the Python language and five
+  complete programs: a safe expression calculator, tic-tac-toe with minimax,
+  Hangman, a quiz marker, and a decimal expense ledger.
+authors:
+  - family-names: Aryan
+    given-names: Rishabh
+    name-particle: Er.
+    affiliation: Indian Institute of Information Technology Bhagalpur
+    orcid: "https://orcid.org/0009-0004-7595-9440"
+repository-code: "https://github.com/Rishabh-bgp/NIELIT-PYTHON-"
+license: MIT
+type: software
+keywords:
+  - python
+  - education
+  - jupyter
+  - nielit
+version: "1.0.0"
+date-released: "2026-10-05"
