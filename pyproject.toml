@@ -1,0 +1,25 @@
+[project]
+name = "nielit-python"
+version = "1.0.0"
+description = "Teaching package for the NIELIT Python notebooks: calculator, games, quiz, and ledger."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Er. Rishabh Aryan" }]
+keywords = ["python", "education", "nielit"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Education",
+    "Topic :: Education",
+]
+
+[project.urls]
+Repository = "https://github.com/Rishabh-bgp/NIELIT-PYTHON-"
+Documentation = "https://github.com/Rishabh-bgp/NIELIT-PYTHON-/tree/main/docs"
+
+[tool.setuptools.packages.find]
+where = ["src"]

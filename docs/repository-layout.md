@@ -32,7 +32,20 @@ NIELIT-PYTHON-/
         ├── Project_03_Hangman.ipynb
         ├── Project_04_Quiz_Master.ipynb
         └── Project_05_Expense_Tracker.ipynb
+├── src/
+│   └── nielit_python/
+│       ├── __init__.py
+│       ├── calculator.py
+│       ├── tictactoe.py
+│       ├── hangman.py
+│       ├── quiz.py
+│       └── ledger.py
+├── tests/
+│   └── test_modules.py
+└── pyproject.toml
 ```
+
+The notebooks are the reading form. `src/nielit_python/` is the import form of the five capstones. `tests/test_modules.py` checks the published samples with `unittest`. `pyproject.toml` names the package and declares no third-party dependencies.
 
 ## Why the notebooks are not at the root
 
@@ -50,6 +63,6 @@ GitHub renders a notebook wherever it sits. Links in the README use the new path
 
 ## What is intentionally absent
 
-There is no `requirements.txt` and no `pyproject.toml`. Adding either would suggest a dependency that the notebooks do not have. Jupyter is a tool for reading the files, not a library they import.
+There is no `requirements.txt`. The notebooks and the modules do not import a third-party package. `pyproject.toml` exists only to name the package, the licence, and the Python version; it does not list dependencies. Jupyter is a tool for reading the notebooks, not a library they import.
 
-There is no test suite. Each capstone demonstrates itself at the bottom of the notebook. A later contribution can add tests if a program grows past what a single run can show.
+The test file covers the published samples. It is not a full specification. The capstone note remains the description of intended behaviour.

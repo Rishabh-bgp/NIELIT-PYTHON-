@@ -14,7 +14,11 @@ Er. Rishabh Aryan, 2026, as stated in the licence file. A citation form for teac
 
 ## Do I need to install NumPy, pandas, or a requirements file?
 
-No. There is no `requirements.txt` because the notebooks do not import third-party packages. Jupyter is a viewer, not a dependency of the code. Installing Jupyter is described in the getting-started guide.
+No. There is no dependency list because the notebooks and the modules do not import third-party packages. Jupyter is a viewer, not a dependency of the code. Installing Jupyter is described in the getting-started guide. The modules run with `PYTHONPATH=src` and need nothing installed.
+
+## Can I use the programs without opening a notebook?
+
+Yes. The five capstones are also modules under `src/nielit_python/`. The run commands and the public names are in [Python modules](python-modules.md). `python3 -m unittest tests/test_modules.py` checks the published samples.
 
 ## Why does `id()` differ from the stored output?
 

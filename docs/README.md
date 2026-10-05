@@ -11,6 +11,7 @@ Read in this order if you are new to the repository.
 5. [Exercises](exercises.md) — practice that is not already solved in a cell.
 6. [Learning path](learning-path.md) — an eight-sitting course with outcomes.
 7. [Capstones](capstones/README.md) — design notes, traces, and limits for the five programs.
-8. [FAQ](faq.md) — version, licence, output, and teaching questions.
+8. [Python modules](python-modules.md) — the same programs as importable code, with the test command.
+9. [FAQ](faq.md) — version, licence, output, and teaching questions.
 
 If a sentence in this directory and a cell disagree, trust the cell and open an issue. The cell was executed; the sentence can drift.

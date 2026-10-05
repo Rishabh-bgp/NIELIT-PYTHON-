@@ -2,6 +2,8 @@
 
 Notebook: [Project_02_Tic_Tac_Toe.ipynb](../../notebooks/capstones/Project_02_Tic_Tac_Toe.ipynb)
 
+Python module: `src/nielit_python/tictactoe.py`. Run it with `PYTHONPATH=src python3 -m nielit_python.tictactoe`. The public class is `Game`.
+
 ## Why this program exists
 
 A board game makes state visible. Tic-tac-toe is small enough that the opponent can search the whole remaining tree. The notebook therefore teaches two ideas at once: an immutable board, and a search that does not need a hand-written strategy table.

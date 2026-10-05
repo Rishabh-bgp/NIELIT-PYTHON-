@@ -1,6 +1,6 @@
 # Capstone notes
 
-Each note matches one notebook under [notebooks/capstones](../../notebooks/capstones). The note is longer than the notebook introduction: it walks the sample, names the responsibility of each type, and states the limit of the published program. The notebook remains the code.
+Each note matches one notebook under [notebooks/capstones](../../notebooks/capstones). The same program is also a module under `src/nielit_python/`. The note is longer than the notebook introduction: it walks the sample, names the responsibility of each type, and states the limit of the published program. The notebook remains the reading form. The module is the import form. Commands are in [the module guide](../python-modules.md).
 
 | Note | Notebook | What the note adds |
 | --- | --- | --- |

@@ -15,6 +15,9 @@ The repository is open source under the [MIT Licence](LICENSE). You may use, cop
 | --- | --- |
 | [notebooks/python_mastery.ipynb](notebooks/python_mastery.ipynb) | Language reference with theory, examples, and captured output |
 | [notebooks/capstones/](notebooks/capstones) | Calculator, tic-tac-toe, Hangman, quiz, expense ledger |
+| [src/nielit_python/](src/nielit_python) | The same five programs as importable Python modules |
+| [tests/test_modules.py](tests/test_modules.py) | Standard-library tests for the published samples |
+| [docs/python-modules.md](docs/python-modules.md) | How to run and import the modules |
 | [docs/language-reference.md](docs/language-reference.md) | Section notes, claims, and the mistake each section prevents |
 | [docs/capstones/](docs/capstones) | Design note, trace, and limits for each program |
 | [docs/getting-started.md](docs/getting-started.md) | Interpreter, Jupyter, and the usual failures |
@@ -36,7 +39,14 @@ python3 -m notebook
 
 Open a file under `notebooks/`. Use **Restart kernel and run all** after a clone if you want the output replaced by a run on your machine. Stored output is already in the file, so the notebooks can be read on GitHub without a kernel. `id()` values and timestamps will differ on a local run. Other printed results should match the notes.
 
-Each notebook is independent. A capstone does not import the language reference. No notebook imports a third-party package. Jupyter is only the program that opens the files.
+Each notebook is independent. A capstone does not import the language reference. The same programs can be run without Jupyter:
+
+```bash
+PYTHONPATH=src python3 -m nielit_python.calculator
+PYTHONPATH=src python3 -m unittest tests/test_modules.py
+```
+
+No notebook, and no module, imports a third-party package. Jupyter is only the program that opens the notebooks. The module guide is [docs/python-modules.md](docs/python-modules.md).
 
 The full setup, including a virtual environment and a table of common failures, is in [docs/getting-started.md](docs/getting-started.md).
 

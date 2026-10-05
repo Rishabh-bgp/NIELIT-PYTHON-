@@ -2,6 +2,8 @@
 
 Notebook: [Project_05_Expense_Tracker.ipynb](../../notebooks/capstones/Project_05_Expense_Tracker.ipynb)
 
+Python module: `src/nielit_python/ledger.py`. Run it with `PYTHONPATH=src python3 -m nielit_python.ledger`. The public classes are `Expense` and `Ledger`.
+
 ## Why this program exists
 
 The last capstone is a ledger. The new constraint is the number type. Binary `float` cannot represent most decimal fractions. Money in this notebook is `decimal.Decimal`, constructed from strings so the value is the one that was written down.

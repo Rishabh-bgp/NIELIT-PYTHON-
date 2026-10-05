@@ -5,7 +5,8 @@ Thank you for considering an improvement to this repository. The material is tea
 ## Before you start
 
 - The project requires Python 3.10 or newer.
-- Notebooks live in `notebooks/`. Prose lives in `docs/`. Keep the two in agreement: if a class or a sample result changes, update the matching document.
+- Notebooks live in `notebooks/`. The importable form of a capstone lives in `src/nielit_python/`. Prose lives in `docs/`. Keep the three in agreement: if a class or a sample result changes, update the module, the notebook, and the matching document.
+- Run `PYTHONPATH=src python3 -m unittest tests/test_modules.py` before opening a pull request that changes a module.
 - Do not commit `.ipynb_checkpoints/`, virtual environments, or `__pycache__/`.
 
 ## How to propose a change

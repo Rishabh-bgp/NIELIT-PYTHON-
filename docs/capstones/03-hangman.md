@@ -2,6 +2,8 @@
 
 Notebook: [Project_03_Hangman.ipynb](../../notebooks/capstones/Project_03_Hangman.ipynb)
 
+Python module: `src/nielit_python/hangman.py`. Run it with `PYTHONPATH=src python3 -m nielit_python.hangman`. The public class is `Hangman`.
+
 ## Why this program exists
 
 Hangman is a state machine with a small public surface. The secret stays on the object. The caller sees a mask, a life count, and the misses. The rules that are easy to get wrong are the repeated guess and the win condition. A repeated guess must not cost a life. The win condition must not be a Boolean stored separately from the letters found, because those two can drift.

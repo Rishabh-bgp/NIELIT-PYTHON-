@@ -2,6 +2,8 @@
 
 Notebook: [Project_04_Quiz_Master.ipynb](../../notebooks/capstones/Project_04_Quiz_Master.ipynb)
 
+Python module: `src/nielit_python/quiz.py`. Run it with `PYTHONPATH=src python3 -m nielit_python.quiz`. The public classes are `Question` and `Attempt`.
+
 ## Why this program exists
 
 A quiz is data plus a scoring policy. If the score is stored on the attempt, every edit of a response has to remember to update it. This notebook does not store the score. `score` and `report` recompute from the paper and the responses. A frozen question means a running attempt cannot rewrite the paper.

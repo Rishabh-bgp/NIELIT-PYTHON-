@@ -2,6 +2,8 @@
 
 Notebook: [Project_01_Safe_Expression_Calculator.ipynb](../../notebooks/capstones/Project_01_Safe_Expression_Calculator.ipynb)
 
+Python module: `src/nielit_python/calculator.py`. Run it with `PYTHONPATH=src python3 -m nielit_python.calculator`. The public class is `Calculator`.
+
 ## Why this program exists
 
 A calculator is the usual first project, and it is usually implemented with `eval`. That works as a demo and becomes a defect as soon as the expression comes from a person. `eval` executes Python, not arithmetic. This notebook builds the smaller machine that a calculator actually needs: a lexer, a parser, a memory register, and a history of successful evaluations.
