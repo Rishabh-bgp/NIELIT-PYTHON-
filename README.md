@@ -1,40 +1,31 @@
 # NIELIT Python
 
-A public teaching repository for the Python language and five small, complete programs. It is written for learners who want the reason for a construct, not only the syntax, and for instructors who want a notebook they can run in class.
+A public teaching repository for the Python language and five complete programs. The notebooks state the idea, then run it. The documents in [docs/](docs) explain the same material more slowly: the claim each section is making, the sample result, the mistake that section is meant to prevent, and the exercise that follows it.
 
-The repository is open source under the [MIT Licence](LICENSE). You may use, copy, modify, and redistribute the notebooks and the documentation, including in a course, provided the copyright notice and licence text travel with any substantial copy.
+The repository is open source under the [MIT Licence](LICENSE). You may use, copy, modify, and redistribute the notebooks and the documentation, including in a course, provided the copyright notice and the permission notice travel with any substantial copy. Attribution beyond that notice is appreciated and not required. A citation form is in [CITATION.cff](CITATION.cff).
 
 **Author:** Er. Rishabh Aryan  
-**Repository:** https://github.com/Rishabh-bgp/NIELIT-PYTHON-
+**Repository:** https://github.com/Rishabh-bgp/NIELIT-PYTHON-  
+**Python:** 3.10 or newer  
+**Dependencies:** none
 
-## What is in this repository
+## Contents
 
-| Path | Purpose |
+| Path | What it is |
 | --- | --- |
-| [notebooks/python_mastery.ipynb](notebooks/python_mastery.ipynb) | Language reference: theory, examples, and captured output |
-| [notebooks/capstones/](notebooks/capstones) | Five independent programs, from a calculator to a ledger |
-| [docs/](docs) | Prose documentation for every notebook and for the learning path |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose a correction or a new notebook |
+| [notebooks/python_mastery.ipynb](notebooks/python_mastery.ipynb) | Language reference with theory, examples, and captured output |
+| [notebooks/capstones/](notebooks/capstones) | Calculator, tic-tac-toe, Hangman, quiz, expense ledger |
+| [docs/language-reference.md](docs/language-reference.md) | Section notes, claims, and the mistake each section prevents |
+| [docs/capstones/](docs/capstones) | Design note, trace, and limits for each program |
+| [docs/getting-started.md](docs/getting-started.md) | Interpreter, Jupyter, and the usual failures |
+| [docs/learning-path.md](docs/learning-path.md) | Eight sittings with outcomes |
+| [docs/exercises.md](docs/exercises.md) | Practice that is not already solved in a cell |
+| [docs/glossary.md](docs/glossary.md) | Terms used in the notebooks |
+| [docs/faq.md](docs/faq.md) | Licence, version, coursework, and output questions |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose a correction |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Expected behaviour in issues and reviews |
-| [LICENSE](LICENSE) | MIT Licence, copyright 2026 Er. Rishabh Aryan |
-
-The notebooks are the primary material. The documents explain how to run them, what each section is for, and which design choice is worth copying into another program.
-
-## Requirements
-
-- Python 3.10 or newer. The reference notebook uses structural pattern matching and the `X | Y` union form, both of which require 3.10.
-- A Jupyter client: JupyterLab, Jupyter Notebook, or VS Code with the Jupyter extension.
-- No third-party packages. Every example uses the standard library.
-
-Check the interpreter before opening a notebook:
-
-```bash
-python3 --version
-```
 
 ## Run the notebooks
-
-Clone the repository and start Jupyter from the repository root.
 
 ```bash
 git clone https://github.com/Rishabh-bgp/NIELIT-PYTHON-.git
@@ -43,44 +34,39 @@ python3 -m pip install notebook
 python3 -m notebook
 ```
 
-Open a notebook from `notebooks/`. Use **Restart kernel and run all** so the captured output is replaced by a run on your machine. Each notebook is independent. A capstone does not import the language reference.
+Open a file under `notebooks/`. Use **Restart kernel and run all** after a clone if you want the output replaced by a run on your machine. Stored output is already in the file, so the notebooks can be read on GitHub without a kernel. `id()` values and timestamps will differ on a local run. Other printed results should match the notes.
 
-If `python3 -m notebook` is not available, install JupyterLab instead and run `python3 -m jupyter lab`. The files are ordinary `.ipynb` documents and do not depend on a particular frontend.
+Each notebook is independent. A capstone does not import the language reference. No notebook imports a third-party package. Jupyter is only the program that opens the files.
 
-## Suggested order
+The full setup, including a virtual environment and a table of common failures, is in [docs/getting-started.md](docs/getting-started.md).
 
-1. Read [docs/getting-started.md](docs/getting-started.md).
-2. Work through [notebooks/python_mastery.ipynb](notebooks/python_mastery.ipynb), using [docs/language-reference.md](docs/language-reference.md) as the section guide.
-3. Build the capstones in order. The calculator practises parsing and errors. Tic-tac-toe and Hangman practise state. The quiz practises records. The expense tracker practises dates and exact decimal money.
-4. Use [docs/learning-path.md](docs/learning-path.md) if you are teaching the set as a short course.
+## Suggested reading order
 
-## Capstone index
+1. [Getting started](docs/getting-started.md), then the [glossary](docs/glossary.md) if a term is unfamiliar.
+2. [python_mastery.ipynb](notebooks/python_mastery.ipynb), with [the section guide](docs/language-reference.md) open beside it.
+3. The capstones in order. The calculator practises parsing and errors. The two games practise state. The quiz practises records. The ledger practises dates and exact decimal money.
+4. [Exercises](docs/exercises.md) after the matching section, not before.
+5. [Learning path](docs/learning-path.md) if you are teaching the set as a short course.
 
-| Notebook | Subject | Main ideas |
+## Capstones
+
+| Notebook | Subject | Detailed note |
 | --- | --- | --- |
-| [Calculator](notebooks/capstones/Project_01_Safe_Expression_Calculator.ipynb) | Arithmetic expressions | Lexer, recursive descent, memory, history |
-| [Tic-tac-toe](notebooks/capstones/Project_02_Tic_Tac_Toe.ipynb) | Two-player game | Immutable board, minimax |
-| [Hangman](notebooks/capstones/Project_03_Hangman.ipynb) | Word game | State machine, derived win condition |
-| [Quiz master](notebooks/capstones/Project_04_Quiz_Master.ipynb) | Marked test | Frozen records, score as a property |
-| [Expense tracker](notebooks/capstones/Project_05_Expense_Tracker.ipynb) | Monthly ledger | `Decimal`, filtering, budget alerts |
+| [Calculator](notebooks/capstones/Project_01_Safe_Expression_Calculator.ipynb) | Recursive-descent arithmetic, memory, history | [note](docs/capstones/01-calculator.md) |
+| [Tic-tac-toe](notebooks/capstones/Project_02_Tic_Tac_Toe.ipynb) | Immutable board, minimax opponent | [note](docs/capstones/02-tic-tac-toe.md) |
+| [Hangman](notebooks/capstones/Project_03_Hangman.ipynb) | State machine, repeated-guess rule | [note](docs/capstones/03-hangman.md) |
+| [Quiz master](notebooks/capstones/Project_04_Quiz_Master.ipynb) | Frozen paper, recomputed score | [note](docs/capstones/04-quiz-master.md) |
+| [Expense tracker](notebooks/capstones/Project_05_Expense_Tracker.ipynb) | `Decimal` ledger, monthly totals, budgets | [note](docs/capstones/05-expense-tracker.md) |
 
-Detailed notes for each program are in [docs/capstones/](docs/capstones).
+## Design rules in the code
 
-## Design rules used in the code
+- A name is a binding. Mutation and rebinding are kept distinct.
+- Default arguments are immutable. A container is created inside the function.
+- Exceptions are specific, and a translated error keeps its cause with `raise ... from`.
+- Text files are opened with `with` and an explicit encoding.
+- Money is `Decimal` constructed from a string.
+- Public behaviour sits on a class. Sample data sits below the class.
 
-- Names are labels. Mutation and rebinding are kept distinct.
-- Mutable default arguments are not used.
-- Exceptions are specific, and a translated error keeps its cause.
-- Files in the reference notebook are opened with `with` and an explicit encoding.
-- Money uses `decimal.Decimal` constructed from strings.
-- Public behaviour sits on a class. Demonstration data sits below the class, so the class can be reused without the sample.
+## Licence
 
-## Licence and citation
-
-This project is licensed under the MIT Licence. See [LICENSE](LICENSE).
-
-If you use the material in teaching notes or a dissertation, a suitable citation is in [CITATION.cff](CITATION.cff). Attribution is not required by the MIT Licence beyond retaining the copyright and permission notice, but it is appreciated.
-
-## Contributing
-
-Corrections to an explanation, a failing example, and new capstones are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Behaviour in issues and reviews is covered by [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+MIT. See [LICENSE](LICENSE). Questions that come up when reusing the material in a course are answered in [docs/faq.md](docs/faq.md).

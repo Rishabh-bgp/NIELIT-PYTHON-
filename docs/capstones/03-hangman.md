@@ -2,26 +2,48 @@
 
 Notebook: [Project_03_Hangman.ipynb](../../notebooks/capstones/Project_03_Hangman.ipynb)
 
-## Purpose
+## Why this program exists
 
-A word game as a small state machine. The secret stays on the object. The caller sees the mask, the remaining lives, and the misses. The interesting rule is not the mask. It is that a repeated guess must not be charged twice, and that the win condition must not be a flag that can disagree with the letters found.
+Hangman is a state machine with a small public surface. The secret stays on the object. The caller sees a mask, a life count, and the misses. The rules that are easy to get wrong are the repeated guess and the win condition. A repeated guess must not cost a life. The win condition must not be a Boolean stored separately from the letters found, because those two can drift.
 
 ## State
 
-`Hangman` stores the secret in lower case, a life count starting at 6, a set of found letters, and a set of missed letters. The constructor rejects a secret that is not alphabetic, so a later mask does not have to decide what a digit means.
+`MAX_LIVES` is 6. The constructor stores the secret in lower case, rejects a secret that is not alphabetic, and starts the found and missed sets empty. A digit or a space in the secret would force the mask to invent a meaning; refusing it keeps the rule to one sentence.
 
-`masked` builds the display from the secret and the found set. It does not store the display. `won` is true when every distinct letter of the secret is in `found`. `lost` is true when lives are zero and the word is not won. `over` is either of those.
+`masked` builds the display from the secret and the found set. It does not store the display. `won` is true when every distinct letter of the secret is contained in `found`. `lost` is true when lives are zero and the word is not won. `over` is either. `status` is the one-line report used by the demonstration and by `play_interactive`.
 
 ## Guess
 
-`guess` rejects a finished game, a value that is not one letter, and a letter already present in either set. A hit adds the letter to `found` and reports `hit` or `won`. A miss adds the letter to `missed`, decreases lives, and reports `miss`, `won`, or `lost`. The `won` branch on a miss is defensive: a miss cannot complete the word. Leaving the check in one place keeps the return values consistent if the rule changes.
+`guess` returns a short status string and changes state only when the guess is new and the game is open.
 
-## Sample
+| Input | Effect |
+| --- | --- |
+| Game already over | No change. Returns `game over`. |
+| Not one letter | No change. Returns `enter one letter`. |
+| Already in found or missed | No change. Returns `already guessed`. |
+| Letter in the secret | Added to `found`. Returns `hit`, or `won` if the set is now complete. |
+| Letter absent | Added to `missed`, lives decrease by one. Returns `miss`, or `lost` if lives are now zero. |
 
-The published sequence guesses `python` with two misses (`a`, `z`) and one repeated `p`. The repeat does not change the life count. The last guess, `n`, reports `won` and the mask `p y t h o n`.
+The defensive `won` check on a miss cannot succeed. It keeps the return values in one place if the rule later changes.
 
-`play_interactive` is defined for a session that can call `input`. The notebook does not call it, so a full run does not block.
+## Published sequence
+
+The secret is `python`.
+
+| Guess | Result | Mask | Lives | Misses |
+| --- | --- | --- | --- | --- |
+| a | miss | `_ _ _ _ _ _` | 5 | a |
+| p | hit | `p _ _ _ _ _` | 5 | a |
+| p | already guessed | unchanged | 5 | a |
+| y, t | hit | `p y t _ _ _` | 5 | a |
+| z | miss | unchanged | 4 | az |
+| h, o | hit | `p y t h o _` | 4 | az |
+| n | won | `p y t h o n` | 4 | az |
+
+The repeated `p` is the check that matters. The life count does not move.
+
+`play_interactive` calls `input` in a loop. The notebook does not call it, so **Run all** does not block. Call it yourself when you want to type.
 
 ## Extension
 
-A word list belongs outside the class: choose a secret, construct `Hangman`, and keep score in the caller. Putting the list on the class would mix the dictionary with the rules of one game.
+A word list belongs in the caller: choose a secret, construct `Hangman`, keep a score outside the class. Putting the dictionary on the class mixes the lexicon with the rules of one game. A whole-word guess is exercise 15.

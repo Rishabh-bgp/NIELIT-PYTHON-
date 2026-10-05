@@ -1,13 +1,16 @@
 # Documentation
 
-This directory is the prose companion to the notebooks. Read it when you want the map of a notebook before opening the notebook, or when you are teaching from the set.
+This directory is the long-form companion to the notebooks. The notebooks contain the theory blocks and the executed cells. These pages explain the same material more slowly: what problem a section is solving, how the sample was chosen, what the printed result means, which mistakes are common, and what to try next.
 
-| Document | Use it for |
-| --- | --- |
-| [Getting started](getting-started.md) | Interpreter, Jupyter, and the first run |
-| [Repository layout](repository-layout.md) | Where each file lives and why |
-| [Language reference](language-reference.md) | Section-by-section guide to `python_mastery.ipynb` |
-| [Learning path](learning-path.md) | A short course order, with outcomes |
-| [Capstones](capstones/README.md) | Design notes for the five programs |
+Read in this order if you are new to the repository.
 
-The notebooks remain the source of the examples. If a sentence here and a cell disagree, the cell is the one to trust, and the sentence should be corrected.
+1. [Getting started](getting-started.md) — interpreter, Jupyter, and the first successful run.
+2. [Repository layout](repository-layout.md) — what each file is for, and what was deliberately left out.
+3. [Language reference](language-reference.md) — section-by-section notes for `python_mastery.ipynb`.
+4. [Glossary](glossary.md) — terms used in the notebooks, defined once.
+5. [Exercises](exercises.md) — practice that is not already solved in a cell.
+6. [Learning path](learning-path.md) — an eight-sitting course with outcomes.
+7. [Capstones](capstones/README.md) — design notes, traces, and limits for the five programs.
+8. [FAQ](faq.md) — version, licence, output, and teaching questions.
+
+If a sentence in this directory and a cell disagree, trust the cell and open an issue. The cell was executed; the sentence can drift.

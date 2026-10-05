@@ -2,35 +2,48 @@
 
 Notebook: [Project_01_Safe_Expression_Calculator.ipynb](../../notebooks/capstones/Project_01_Safe_Expression_Calculator.ipynb)
 
-## Purpose
+## Why this program exists
 
-Evaluate arithmetic text without `eval`. `eval` will run any Python expression, which is the wrong tool for a calculator that may later sit behind a text box. The notebook builds a lexer and a recursive-descent parser instead. The grammar is small enough to read in one sitting and strict enough to reject a trailing operator and a division by zero.
+A calculator is the usual first project, and it is usually implemented with `eval`. That works as a demo and becomes a defect as soon as the expression comes from a person. `eval` executes Python, not arithmetic. This notebook builds the smaller machine that a calculator actually needs: a lexer, a parser, a memory register, and a history of successful evaluations.
+
+The teaching point is that precedence is structure. It is not a table consulted at runtime. A lower-precedence rule calls a higher-precedence rule. That is why `2 + 3 * 4` is 14.
 
 ## Grammar
 
 ```text
 expression = term   { (+|-) term }
 term       = power  { (*|/|//|%) power }
-power      = unary  [ ** power ]
+power      = unary  [ ** power ]          # right associative
 unary      = - unary | primary
 primary    = number | ( expression ) | memory
 ```
 
-Precedence is the call structure. `expression` calls `term`, and `term` calls `power`, so multiplication binds more tightly than addition. Power calls itself on the right, so `2 ** 3 ** 2` is `2 ** (3 ** 2)` and equals 512, matching Python.
+Power calls itself on the right-hand side, so `2 ** 3 ** 2` is `2 ** (3 ** 2)` and equals 512, matching Python. Parentheses are a primary: they reset the parser to `expression`, which is why `(2 + 3) * 4` is 20.
 
-## Types
+## Walk through `2 + 3 * 4`
 
-- `CalculatorError` is the only failure type the parser raises. Callers catch that type and leave other exceptions alone.
-- `Token` is a frozen pair of kind and text. The lexer does not evaluate.
-- `Lexer` walks the source once. `//` and `**` are recognised before a single-character operator, because a left-to-right scan would otherwise split them.
-- `Parser` holds the token list, an index, and the current memory value. It does not mutate the calculator.
-- `Calculator` owns memory and history. `evaluate` appends a pair only after a successful parse. `store` copies the last value into memory. `clear` drops both.
+1. `Lexer` yields number `2`, operator `+`, number `3`, operator `*`, number `4`, end.
+2. `expression` calls `term`. `term` calls `power`, which reads `2`.
+3. The next operator is `+`, which is not a term operator, so `term` returns `2`.
+4. `expression` sees `+`, calls `term` again, and that `term` reads `3`, sees `*`, and reads `4`.
+5. `3 * 4` is computed inside `term` and returned as `12`.
+6. `expression` adds `2 + 12` and returns `14`.
 
-`M` is a primary. It may appear anywhere a number may appear. It reads memory; it does not update memory. Update is an explicit `store` call, so evaluation has no hidden side effect.
+The multiplication never reaches `expression`. That is the whole of precedence for this grammar.
 
-## Sample result
+## Types and responsibilities
 
-The published run prints:
+`CalculatorError` is the only failure type the parser raises. A caller that wants a message catches that type and lets unexpected defects propagate.
+
+`Token` is a frozen pair of kind and text. The lexer does not evaluate. Kinds in use are `NUMBER`, `OP`, `LPAREN`, `RPAREN`, `MEMORY`, and `EOF`.
+
+`Lexer` scans once. Two-character operators are recognised before a single character, because a left-to-right scan would otherwise split `//` into two divisions. A lone `.` is an incomplete number. Any other character is an error at the point it is seen.
+
+`Parser` holds the token list, an index, and the current memory value. It does not update the calculator. Division, floor division, and remainder check for a zero right operand before the operation. The check is in `term`, which is the only rule that performs those operators.
+
+`Calculator` owns memory and history. `evaluate` appends a pair only after a successful parse, so a failed expression does not appear in history. `store` copies the last successful value into memory and raises if history is empty. `clear` drops both. `M` reads memory. It does not write it. Writing is the explicit `store` call, so evaluation has no hidden side effect.
+
+## Published result
 
 ```text
    2 + 3 * 4 = 14.0
@@ -45,8 +58,10 @@ handled: division by zero
 history length: 7
 ```
 
-History length is 7 because the memory reuse expression is also recorded. The failed division is not recorded.
+Memory is `2.0` because `store` runs after `10 % 4`. `M * 2 + 1` is the seventh successful evaluation, which is why the history length is 7. The division by zero is handled and not recorded.
 
-## Limits
+Numbers are parsed as `float`. Floor division therefore follows float floor division. There is no name table beyond the single register, and there are no functions. A name table in `Parser` is the natural extension, still without `eval`.
 
-Numbers are parsed as `float`. Floor division therefore follows float floor division. There is no variable table beyond the single memory register, and there are no functions. Those are the natural extensions: a name table in `Parser`, still without calling `eval`.
+## Related reference sections
+
+Operators and truthiness, exceptions, and the closing `ReadingLog` example. The calculator is the first place those ideas have to survive a bad input rather than a chosen one.

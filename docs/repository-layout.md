@@ -9,7 +9,10 @@ NIELIT-PYTHON-/
 ├── README.md
 ├── docs/
 │   ├── README.md
+│   ├── exercises.md
+│   ├── faq.md
 │   ├── getting-started.md
+│   ├── glossary.md
 │   ├── language-reference.md
 │   ├── learning-path.md
 │   ├── repository-layout.md

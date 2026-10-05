@@ -2,26 +2,34 @@
 
 Notebook: [Project_02_Tic_Tac_Toe.ipynb](../../notebooks/capstones/Project_02_Tic_Tac_Toe.ipynb)
 
-## Purpose
+## Why this program exists
 
-A complete two-player game with an opponent that plays optimally. The human mark is `X`. The computer mark is `O`. The search is minimax over the whole remaining tree. A 3 by 3 board does not need alpha-beta pruning; the tree is small once finished games are cut off.
+A board game makes state visible. Tic-tac-toe is small enough that the opponent can search the whole remaining tree. The notebook therefore teaches two ideas at once: an immutable board, and a search that does not need a hand-written strategy table.
+
+The human mark is `X`. The computer mark is `O`. `O` uses minimax. If both sides play perfectly from an empty board, the result is a draw. The published sample does not play perfectly for `X`, and `O` wins. That is evidence the search is punishing a mistake, not evidence that `O` can force a win against optimal play.
 
 ## Board
 
-The board is a tuple of nine strings. Empty cells are a single space. A tuple cannot be mutated, so every imagined move builds a new tuple with slicing. The live game and the search cannot accidentally share a board.
+The board is a tuple of nine strings. An empty cell is a single space, not the empty string, so a rendered row keeps its width. A tuple cannot be mutated. Every imagined move builds a new tuple with slicing. The live game and the search cannot share a board by accident.
 
-Winning lines are the three rows, three columns, and two diagonals, stored as index triples. `winner` returns the mark if a line is uniform and not empty. `full` is true when no space remains. A draw is a full board with no winner.
+Winning lines are three rows, three columns, and two diagonals, stored as index triples in `LINES`. `winner` returns the mark if a line is uniform and not empty. `full` is true when no space remains. A draw is a full board with no winner. `children` yields each legal index paired with the board that move produces. It does not play the move.
 
-## Search
+## Minimax
 
-`minimax` returns `+1` if `O` has won, `-1` if `X` has won, and `0` for a draw or a position that leads only to a draw. On `O`'s turn the function takes the maximum child score. On `X`'s turn it takes the minimum, which models a human who also plays the best available reply. `best_move` asks for the index whose resulting position has the highest score for `O`.
+A finished position scores `+1` if `O` has won, `-1` if `X` has won, and `0` for a draw. On `O`'s turn the function takes the maximum child score. On `X`'s turn it takes the minimum, which models a human who also plays the best reply. `best_move` chooses the index whose resulting position has the highest score for `O`. Equal scores keep the later index, because `max` on pairs compares the score first and the index second. The engine does not prefer the centre by a special case. The centre falls out of the scores when it is the best reply.
 
-## Game object
+No alpha-beta pruning is used. After the first move the tree is at most `8!` leaves, and wins cut it further. Clarity matters more than the pruning at this size.
 
-`Game.play` applies a human index, rejects an occupied or out-of-range cell, and if the game is still open applies `best_move`. `outcome` reports `X wins`, `O wins`, `draw`, or `in progress`.
+## The published game
 
-The published demonstration does not read `input`. It walks a preferred list of human indexes and skips a cell the engine has already taken. In that run the human opens in a corner, the engine takes the centre, and the human's third move leaves a column that `O` completes. The result is `O wins`. That is the expected result of those human moves, not a fault in the search. Optimal play by both sides from an empty board ends in a draw; this sample does not play optimally for `X`.
+The demonstration does not call `input`. It walks a preferred list and skips a cell the engine has already taken.
+
+1. Human plays index 0. Engine plays 4, the centre. Status: in progress.
+2. Human plays index 2. Engine plays 1, blocking the top row. Status: in progress.
+3. Human plays index 6. Engine plays 7. The middle column is `O`, `O`, `O`. Status: `O wins`.
+
+`Game.play` rejects an occupied or out-of-range cell with `ValueError` before it asks the engine to move. `outcome` is derived from the board on each call. It is not a stored flag.
 
 ## Extension
 
-A terminal loop is a `while` around `play` and `input`. Keep the parsing of the typed index outside `Game`, and keep `Game.play` as the only way a mark is written.
+A terminal loop is a `while` around `input` and `play`. Parse the typed index outside `Game`. Keep `play` as the only method that writes a mark. A draw sample is exercise 14 in [the exercise list](../exercises.md): change the human moves, do not change the search, and record the move list.

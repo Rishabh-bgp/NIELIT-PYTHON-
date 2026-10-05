@@ -1,17 +1,18 @@
 # Capstone notes
 
-Each note matches one notebook under [notebooks/capstones](../../notebooks/capstones). Read the note, then run the notebook. The note does not replace the code.
+Each note matches one notebook under [notebooks/capstones](../../notebooks/capstones). The note is longer than the notebook introduction: it walks the sample, names the responsibility of each type, and states the limit of the published program. The notebook remains the code.
 
-| Note | Notebook |
-| --- | --- |
-| [01 — Calculator](01-calculator.md) | `Project_01_Safe_Expression_Calculator.ipynb` |
-| [02 — Tic-tac-toe](02-tic-tac-toe.md) | `Project_02_Tic_Tac_Toe.ipynb` |
-| [03 — Hangman](03-hangman.md) | `Project_03_Hangman.ipynb` |
-| [04 — Quiz master](04-quiz-master.md) | `Project_04_Quiz_Master.ipynb` |
-| [05 — Expense tracker](05-expense-tracker.md) | `Project_05_Expense_Tracker.ipynb` |
+| Note | Notebook | What the note adds |
+| --- | --- | --- |
+| [01 — Calculator](01-calculator.md) | `Project_01_Safe_Expression_Calculator.ipynb` | Grammar and a step trace of `2 + 3 * 4` |
+| [02 — Tic-tac-toe](02-tic-tac-toe.md) | `Project_02_Tic_Tac_Toe.ipynb` | Search rules and the three-move sample |
+| [03 — Hangman](03-hangman.md) | `Project_03_Hangman.ipynb` | Guess table and the repeated-letter check |
+| [04 — Quiz master](04-quiz-master.md) | `Project_04_Quiz_Master.ipynb` | Why the score is not stored |
+| [05 — Expense tracker](05-expense-tracker.md) | `Project_05_Expense_Tracker.ipynb` | Row table, exact money, excluded September |
 
 Shared rules:
 
-- The program is one cell, so a reader can copy it out as a module.
-- Sample input sits under the class and prints a result. That result is the regression check.
+- The program is one cell, so it can be copied out as a module.
+- Sample input sits under the class and prints a result. That result is the check against the note.
 - No notebook imports another notebook.
+- Extensions that are not implemented are listed as exercises in [docs/exercises.md](../exercises.md).
